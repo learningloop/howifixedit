@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>#HowIFixedIt</title>
+    <!-- Tiny & mighty line which saves typing target="_blank" in all links -->
+    <base target="_blank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" media="screen"/>
@@ -113,8 +115,8 @@
               Most of the solutions online suggested, setting <code>JAVA_OPTS</code> with increased <code>-Xmx</code> value.
               But, none of the solutions were specific to the configuration in DigitalOcean (Ubuntu 12.04).<br><br>
               
-              Finally one of the comments to <a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get"
-              target="_blank">this</a> post on DigitalOcean's blog suggested that, we need to update 
+              Finally one of the comments to <a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get">
+              this</a> post on DigitalOcean's blog suggested that, we need to update 
               the <code>JAVA_OPTS</code> in <code>/etc/default/tomcat7</code>.<br><br>
               
               In <code>/etc/default/tomcat7</code> the default <code>-Xmx</code> value was set to 128M, 
