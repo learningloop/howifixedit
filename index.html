@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>#HowIFixedIt</title>
+    <!-- Tiny & mighty line which saves typing target="_blank" in all links -->
+    <base target="_blank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" media="screen"/>
@@ -11,12 +12,25 @@
     <style type="text/css">
        body { 
           font-family:'Abel',Sans; 
-          margin:0 auto;  
+          margin:0 auto; 
+          padding:5px; 
        }
+       
+       td {
+          align: left;
+       }
+       
+       .dataTables_filter input {width:342px}
     </style>
   </head>
   <body>
-  
+    <!-- Fork me on GitHub -->
+    <a href="https://github.com/learningloop/howifixedit/tree/gh-pages">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" 
+    src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" 
+    alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    
+    <!-- Actual content -->
     <p>
     <table id="howifixedit" class="display" cellspacing="0" width="100%">
       <thead>
@@ -34,31 +48,100 @@
         </tr>
       </tfoot>
       <tbody>
-        <tr>
+        <!-- Problem 1 -->
+        <tr>  
           <td>1</td>
           <td>
-              Problem description here
+              <b>How to configure Eclipse EGIT to work with gh-pages of github?</b>
+              
+              <p>
+              While trying to create this github page for #howifixedit project, 
+              i couldn't find a direct article on how-tos. <br>
+              The github help page provided a article on configuring it manually
+              in command line.<br>
+              Link: <a href="https://help.github.com/articles/creating-project-pages-manually/">
+              https://help.github.com/articles/creating-project-pages-manually/</a>                            
+              </p>
+              
           </td>
           <td>
-              Fix details here
+              After reading through many help pages and websites, i found creating new 
+              branch (in the name gh-pages) from Eclipse itself.<br>
+              Following lists the steps:<br>
+              <ul>
+                 <li>Open Git Repositories perspective in Eclipse. 
+                 Note this perspective is available when we install EGit plugin in Eclipse.</li>
+                 <li>Right click the project repository for which we need to create github project page</li>
+                 <li>Choose <code>Switch To</code> option, in that choose <code>New Branch</code></li>
+                 <li>Enter the branch name as <code>gh-pages</code>, please note the <code>Source</code> 
+                 should be <code>master</code></li>
+                 <li>Click the checkbox <code>Configure upstream for push and pull</code></li>
+                 <li>Choose <code>Merge upstream commits into local branch</code></li>
+                 <li>Right click repository again and click on <code>Commit</code></li>
+                 <li>Once commit is over you can go to http://<username>.github.io/<projectname></li>
+                 <li>Any change in master branch needs to be done in gh-pages. This may not be correct,
+                 need to find if any better way is there</li>
+              </ul>
           </td>
         </tr>
+        
+        <!-- Problem 2 -->
+                <tr>  
+          <td>2</td>
+          <td>
+              <b>Hitting <code>java.lang.OutOfMemoryError: Java heap space</code> in tomcat7 in Digital Ocean
+              server with 512M RAM</b>
+              
+              <p>
+              Recently while helping my friend to test his java application in my DigitalOcean
+              server, even after restarting the tomcat7 following error is thrown while
+              accessing the page:<br>
+              <code>
+              The proxy could not connect to the destination in time. 
+              Please verify the site you are attempting to access and retry.<br>
+              URL: http://xyz:8080/project
+              </code><br>
+              </p>
+              
+          </td>
+          <td>
+              My DigitalOcean droplet is Ubuntu 12.04 with LAMP configured. Tomcat was installed separately.<br>
+              
+              Though restarting tomcat7 was successful, in <code>/var/lib/tomcat7/logs/catalina.2015-06-23.log</code>
+              following error is seen:<br>
+              <code style="color:red">java.lang.OutOfMemoryError: Java heap space</code><br><br>
+              
+              Most of the solutions online suggested, setting <code>JAVA_OPTS</code> with increased <code>-Xmx</code> value.
+              But, none of the solutions were specific to the configuration in DigitalOcean (Ubuntu 12.04).<br><br>
+              
+              Finally one of the comments to <a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get">
+              this</a> post on DigitalOcean's blog suggested that, we need to update 
+              the <code>JAVA_OPTS</code> in <code>/etc/default/tomcat7</code>.<br><br>
+              
+              In <code>/etc/default/tomcat7</code> the default <code>-Xmx</code> value was set to 128M, 
+              after increasing that value to 256M and restarting the tomcat7 resolved the problem.
+                            
+          </td>
+        </tr>
+        
+        <!-- Keep adding new problems in <tr> above this comment -->
       </tbody>
     </table>
     </p>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
     $(document).ready( function () {
 			$('#howifixedit')
-				.addClass( 'nowrap' )
+				.addClass( 'wrap' )
 				.dataTable( {
 					responsive: true,
 					columnDefs: [
-						{ targets: [-1, -3], className: 'dt-body-right' }
-					]
-				} );
-		} );    
+						{ targets: [-1, -3], className: 'dt-body-left' }
+					],
+					"order": [[ 0, "desc" ]],					
+				} );			    
+		} );
     </script>
   </body>
 </html>
