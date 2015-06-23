@@ -14,6 +14,10 @@
           margin:0 auto; 
           padding:5px; 
        }
+       
+       td {
+          align: left;
+       }
     </style>
   </head>
   <body>
@@ -35,9 +39,9 @@
         </tr>
       </tfoot>
       <tbody>
-        <tr>
-          <!-- Problem 1 -->
-          <td>1</td>
+        <!-- Problem 1 -->
+        <tr>  
+          <td class="dt-body-center sorting_1">1</td>
           <td>
               <b>How to configure Eclipse EGIT to work with gh-pages of github?</b>
               
@@ -51,7 +55,7 @@
               </p>
               
           </td>
-          <td>
+          <td class="dt-body-left">
               After reading through many help pages and websites, i found creating new 
               branch (in the name gh-pages) from Eclipse itself.<br>
               Following lists the steps:<br>
@@ -71,6 +75,47 @@
               </ul>
           </td>
         </tr>
+        
+        <!-- Problem 2 -->
+                <tr>  
+          <td class="dt-body-center sorting_1">2</td>
+          <td>
+              <b>Hitting <code>java.lang.OutOfMemoryError: Java heap space</code> in tomcat7 in Digital Ocean
+              server with 512M RAM</b>
+              
+              <p>
+              Recently while helping my friend to test his java application in my DigitalOcean
+              server, even after restarting the tomcat7 following error is thrown while
+              accessing the page:<br>
+              <code>
+              The proxy could not connect to the destination in time. 
+              Please verify the site you are attempting to access and retry.<br>
+              URL: http://xyz:8080/project
+              </code><br>
+              </p>
+              
+          </td>
+          <td class="dt-body-left">
+              My DigitalOcean droplet is Ubuntu 12.04 with LAMP configured. Tomcat was installed separately.<br>
+              
+              Though restarting tomcat7 was successful, in <code>/var/lib/tomcat7/logs/catalina.2015-06-23.log</code>
+              following error is seen:<br>
+              <code style="color:red">java.lang.OutOfMemoryError: Java heap space</code><br><br>
+              
+              Most of the solutions online suggested, setting <code>JAVA_OPTS</code> with increased <code>-Xmx</code> value.
+              But, none of the solutions were specific to the configuration in DigitalOcean (Ubuntu 12.04).<br><br>
+              
+              Finally one of the comments to <a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get"
+              target="_blank">this</a> post on DigitalOcean's blog suggested that, we need to update 
+              the <code>JAVA_OPTS</code> in <code>/etc/default/tomcat7</code>.<br><br>
+              
+              In <code>/etc/default/tomcat7</code> the default <code>-Xmx</code> value was set to 128M, 
+              after increasing that value to 256M and restarting the tomcat7 resolved the problem.
+                            
+          </td>
+        </tr>
+        
+        <!-- Keep adding new problems in <tr> above this comment -->
       </tbody>
     </table>
     </p>
@@ -79,7 +124,7 @@
     <script type="text/javascript">
     $(document).ready( function () {
 			$('#howifixedit')
-				.addClass( 'nowrap' )
+				.addClass( 'wrap' )
 				.dataTable( {
 					responsive: true,
 					columnDefs: [
