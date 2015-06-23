@@ -11,7 +11,8 @@
     <style type="text/css">
        body { 
           font-family:'Abel',Sans; 
-          margin:0 auto;  
+          margin:0 auto; 
+          padding:5px; 
        }
     </style>
   </head>
@@ -35,12 +36,39 @@
       </tfoot>
       <tbody>
         <tr>
+          <!-- Problem 1 -->
           <td>1</td>
           <td>
-              Problem description here
+              <b>How to configure Eclipse EGIT to work with gh-pages of github?</b>
+              
+              <p>
+              While trying to create this github page for #howifixedit project, 
+              i couldn't find a direct article on how-tos. <br>
+              The github help page provided a article on configuring it manually
+              in command line.<br>
+              Link: <a href="https://help.github.com/articles/creating-project-pages-manually/">
+              https://help.github.com/articles/creating-project-pages-manually/</a>                            
+              </p>
+              
           </td>
           <td>
-              Fix details here
+              After reading through many help pages and websites, i found creating new 
+              branch (in the name gh-pages) from Eclipse itself.<br>
+              Following lists the steps:<br>
+              <ul>
+                 <li>Open Git Repositories perspective in Eclipse. 
+                 Note this perspective is available when we install EGit plugin in Eclipse.</li>
+                 <li>Right click the project repository for which we need to create github project page</li>
+                 <li>Choose <code>Switch To</code> option, in that choose <code>New Branch</code></li>
+                 <li>Enter the branch name as <code>gh-pages</code>, please note the <code>Source</code> 
+                 should be <code>master</code></li>
+                 <li>Click the checkbox <code>Configure upstream for push and pull</code></li>
+                 <li>Choose <code>Merge upstream commits into local branch</code></li>
+                 <li>Right click repository again and click on <code>Commit</code></li>
+                 <li>Once commit is over you can go to http://<username>.github.io/<projectname></li>
+                 <li>Any change in master branch needs to be done in gh-pages. This may not be correct,
+                 need to find if any better way is there</li>
+              </ul>
           </td>
         </tr>
       </tbody>
