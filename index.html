@@ -86,7 +86,7 @@
         </tr>
         
         <!-- Problem 2 -->
-                <tr>  
+        <tr>  
           <td>2</td>
           <td>
               <b>Hitting <code>java.lang.OutOfMemoryError: Java heap space</code> in tomcat7 in Digital Ocean
@@ -122,6 +122,78 @@
               after increasing that value to 256M and restarting the tomcat7 resolved the problem.
                             
           </td>
+        </tr>
+        
+        
+        <tr>  
+          <td>3</td>
+          <td>
+              <b>Making <code>SimpleHTTPServer</code> in python to support different MIME types</b>
+              
+              <p>
+              When i came to know about <code>SimpleHTTPServer</code> of python, i got hooked to it.
+              To temporarily host some of my folders i used it extensively. 
+              But, one thing which needed improvement was to make the SimpleHTTPServer to
+              support different MIME types.<br>
+              </p>
+              
+          </td>
+          <td>
+              <b>Usage & example:</b><br> 
+              Format: <br>
+              <code>cd /home/somedir<br>
+              python -m SimpleHTTPServer <PORT_NUMBER></code> 
+              <br><br>
+              Example: <br>
+              <code>cd /home/prasbala/codeSamples<br>
+              python -m SimpleHTTPServer 8089</code>
+              <br><br>
+              If the directory has a file named index.html, that file will be served
+			  as the initial file. If there is no index.html, then the files in
+			  the directory will be listed. 
+			  <br><br>
+			  To access the html/directory following URL can be entered in browser:<br> 
+			  http://<HOST_ADDRESS>:<PORT><br>
+			  http://slc03qhm.us.oracle.com:8089/ <br>
+			  <br>
+			  <b>Supporting more mimetypes:</b>
+			  By default the SimpleHTTPServer supports limited number of mimetypes (like .c, .h, .py). 
+			  To support more mimetypes following part of SimpleHTTPServer needs to be changed:<br>
+				    <pre>extensions_map.update({
+				        '': 'application/octet-stream', # Default
+				        '.py': 'text/plain',
+				        '.c': 'text/plain',
+				        '.h': 'text/plain',
+				        })
+				</pre>
+				 
+				<br>
+				To the following with more mimetypes:<br>
+				<pre>
+				    extensions_map.update({
+				        '': 'application/octet-stream', # Default
+				        '.py': 'text/plain',
+				        '.c': 'text/plain',
+				        '.h': 'text/plain',
+				        '.java': 'text/plain',
+				        '.tsc': 'text/plain',
+				        '.sql': 'text/plain',
+				        '.log': 'text/plain',
+				        '.out': 'text/plain',
+				        '.sav': 'text/plain',
+				        '.txt': 'text/plain',
+				        '.sh': 'text/plain',
+				        '.tcov': 'text/plain',
+				        })
+				
+				 </pre>
+				<br>
+				To find the SimpleHTTPServer location run the following command:<br>
+				<code>locate SimpleHTTPServer</code><br><br>
+				
+				To edit the file, edit it as sudo user:<br>
+				<code>sudo vim /usr/lib64/python2.4/SimpleHTTPServer.py</code>
+			</td>
         </tr>
         
         <!-- Keep adding new problems in <tr> above this comment -->
