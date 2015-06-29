@@ -223,6 +223,29 @@
 
         	</td>
         </tr>
+        
+        <!-- Problem 5 -->
+        <tr>
+        	<td>5</td>
+        	<td>
+        	<b>Linux command to know which process is using a particular port</b>        	
+        	</td>
+        	<td>
+        	 	<b>Format:</b><br>
+				<code> lsof -i:&lt;PORT_NUMBER&gt;</code>
+				
+				<br><br>
+				<b>Example:</b>
+				<code>lsof -i:8080 </code>
+				
+				<br><br>
+				Some processes/pids are only available to root. For example to see the list of processes listening on some primary ports(25, 22, etc) we need to run the command as superuser.<br>
+				<b>Example:</b><br>
+				<code>sudo lsof -i :22<br>
+				sudo lsof -i :25</code>
+        	</td>
+        </tr>
+        
         <!-- Keep adding new problems in <tr> above this comment -->
       </tbody>
     </table>
